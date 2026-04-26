@@ -1,32 +1,41 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mamulux Catalog</title>
+
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
 <header class="hero">
-  <nav class="navbar">
-    <div class="brand">
-      <img id="companyLogo" src="" alt="Mamulux Logo">
-      <div>
-        <h1>Mamulux</h1>
-        <p>Premium Furniture Catalog</p>
-      </div>
+  <div class="nav">
+    <div class="logo-box">
+      <img id="logo" src="" alt="logo">
+      <h1>Mamulux</h1>
     </div>
 
-    <div class="nav-actions">
-      <a id="callBtn" class="nav-btn" href="#">დარეკვა</a>
-      <a id="whatsappBtn" class="nav-btn whatsapp" href="#" target="_blank">WhatsApp</a>
-    </div>
-  </nav>
-
-  <div class="hero-content">
-    <span class="eyebrow">Mamulux Collection</span>
-    <h2>დიზაინერული ავეჯი შენი სივრცისთვის</h2>
-    <p>
-      შეარჩიე პრემიუმ ხარისხის სკამები, მაგიდები და ავეჯის მოდელები თანამედროვე კატალოგიდან.
-    </p>
-
-    <div class="hero-buttons">
-      <a href="#productsGrid" class="hero-main-btn">კატალოგის ნახვა</a>
-      <a id="heroWhatsapp" href="#" target="_blank" class="hero-second-btn">მოგვწერე WhatsApp-ზე</a>
+    <div class="nav-btns">
+      <a id="callBtn" href="#">დარეკვა</a>
+      <a id="waBtn" href="#" target="_blank">WhatsApp</a>
     </div>
   </div>
 
-  <div class="hero-glow one"></div>
-  <div class="hero-glow two"></div>
+  <div class="hero-text">
+    <h2>დიზაინერული ავეჯი შენი სივრცისთვის</h2>
+    <p>აირჩიე თანამედროვე მოდელები, საუკეთესო ფასებში</p>
+    <a href="#products" class="hero-btn">ნახე კატალოგი</a>
+  </div>
 </header>
+
+<section class="tools">
+  <input id="search" placeholder="ძიება...">
+</section>
+
+<section id="products" class="grid"></section>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
