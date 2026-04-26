@@ -2,40 +2,68 @@
 <html lang="ka">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mamulux Catalog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="stylesheet" href="./style.css">
+  <title>Mamulux | Premium Catalog</title>
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
 
 <header class="hero">
-  <div class="nav">
-    <div class="logo-box">
-      <img id="logo" src="" alt="logo">
-      <h1>Mamulux</h1>
+  <div class="hero-bg"></div>
+
+  <nav class="navbar">
+    <div class="brand">
+      <img id="companyLogo" src="" alt="Mamulux Logo">
+      <div>
+        <h1>Mamulux</h1>
+        <p>Premium Furniture Catalog</p>
+      </div>
     </div>
 
-    <div class="nav-btns">
-      <a id="callBtn" href="#">დარეკვა</a>
-      <a id="waBtn" href="#" target="_blank">WhatsApp</a>
+    <div class="nav-actions">
+      <a id="callBtn" class="nav-btn ghost" href="#">დარეკვა</a>
+      <a id="whatsappBtn" class="nav-btn whatsapp" href="#" target="_blank">WhatsApp</a>
     </div>
-  </div>
+  </nav>
 
-  <div class="hero-text">
-    <h2>დიზაინერული ავეჯი შენი სივრცისთვის</h2>
-    <p>აირჩიე თანამედროვე მოდელები, საუკეთესო ფასებში</p>
-    <a href="#products" class="hero-btn">ნახე კატალოგი</a>
-  </div>
+  <section class="hero-content">
+    <span class="eyebrow">Mamulux Collection</span>
+    <h2>პრემიუმ ავეჯის ონლაინ კატალოგი</h2>
+    <p>ნახე მოდელები, ზომები, ფერები და ფასები ერთ სივრცეში. შეარჩიე სასურველი პროდუქტი და დაგვიკავშირდი მარტივად.</p>
+
+    <div class="hero-actions">
+      <a href="#catalog" class="hero-btn primary">კატალოგის ნახვა</a>
+      <a id="heroWhatsapp" href="#" target="_blank" class="hero-btn secondary">მოგვწერე WhatsApp-ზე</a>
+    </div>
+  </section>
 </header>
 
-<section class="tools">
-  <input id="search" placeholder="ძიება...">
+<section id="catalog" class="catalog-wrap">
+  <div class="tools">
+    <input id="searchInput" type="text" placeholder="მოძებნე პროდუქტი, კატეგორია ან კოდი..." />
+    <select id="categoryFilter">
+      <option value="">ყველა კატეგორია</option>
+    </select>
+  </div>
+
+  <div id="productsGrid" class="products-grid"></div>
 </section>
 
-<section id="products" class="grid"></section>
+<footer class="footer">
+  <div>
+    <h3>Mamulux</h3>
+    <p id="footerAddress"></p>
+  </div>
 
-<script src="config.js"></script>
-<script src="script.js"></script>
+  <div class="footer-links">
+    <a id="facebookLink" href="#" target="_blank">Facebook</a>
+    <a id="instagramLink" href="#" target="_blank">Instagram</a>
+    <a id="mapsLink" href="#" target="_blank">Google Maps</a>
+  </div>
+</footer>
+
+<script src="./config.js"></script>
+<script src="./script.js"></script>
 </body>
 </html>
