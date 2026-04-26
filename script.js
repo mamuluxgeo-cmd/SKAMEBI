@@ -68,8 +68,20 @@ async function loadConfig() {
 
 function setupCompanyInfo(config) {
   if (config.logo) document.getElementById("companyLogo").src = config.logo;
-  if (config.phone) document.getElementById("callBtn").href = `tel:${config.phone}`;
-  if (config.whatsapp) document.getElementById("whatsappBtn").href = `https://wa.me/${config.whatsapp}`;
+
+  if (config.phone) {
+    document.getElementById("callBtn").href = `tel:${config.phone}`;
+  }
+
+  if (config.whatsapp) {
+    document.getElementById("whatsappBtn").href = `https://wa.me/${config.whatsapp}`;
+  }
+
+  setTopLink("topPhone", config.phone ? `tel:${config.phone}` : "");
+  setTopLink("topWhatsapp", config.whatsapp ? `https://wa.me/${config.whatsapp}` : "");
+  setTopLink("topFacebook", config.facebook);
+  setTopLink("topInstagram", config.instagram);
+  setTopLink("topMaps", config.maps);
 
   setLink("facebookLink", config.facebook);
   setLink("instagramLink", config.instagram);
@@ -233,12 +245,12 @@ function fixDriveImage(url) {
 
   const fileMatch = url.match(/\/d\/([^/]+)/);
   if (fileMatch && fileMatch[1]) {
-    return `https://drive.google.com/uc?export=view&id=${fileMatch[1]}`;
+    return `https://drive.google.com/thumbnail?id=${fileMatch[1]}&sz=w1600`;
   }
 
   const idMatch = url.match(/[?&]id=([^&]+)/);
   if (idMatch && idMatch[1]) {
-    return `https://drive.google.com/uc?export=view&id=${idMatch[1]}`;
+    return `https://drive.google.com/thumbnail?id=${idMatch[1]}&sz=w1600`;
   }
 
   return url;
@@ -266,6 +278,31 @@ function setLink(id, url) {
   if (url) el.href = url;
   else el.style.display = "none";
 }
+
+function setTopLink(id, url) {
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  if (url) {
+    el.href = url;
+  } else {
+    el.style.display = "none";
+  }
+}
+
+document.addEventListener("click", e => {
+  if (e.target.classList.contains("product-image")) {
+    const modal = document.getElementById("imageModal");
+    const modalImage = document.getElementById("modalImage");
+
+    modalImage.src = e.target.src;
+    modal.classList.add("active");
+  }
+
+  if (e.target.id === "closeModal" || e.target.id === "imageModal") {
+    document.getElementById("imageModal").classList.remove("active");
+  }
+});
 
 function escapeHTML(str) {
   return String(str).replace(/[&<>"']/g, match => ({
