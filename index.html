@@ -4,51 +4,45 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Mamulux | Premium Catalog</title>
-  <link rel="stylesheet" href="./style.css" />
+  <title>Mamulux | Product Catalog</title>
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <header class="hero">
-  <div class="hero-bg"></div>
-
   <nav class="navbar">
     <div class="brand">
       <img id="companyLogo" src="" alt="Mamulux Logo">
       <div>
         <h1>Mamulux</h1>
-        <p>Premium Furniture Catalog</p>
+        <p>Premium Product Catalog</p>
       </div>
     </div>
 
     <div class="nav-actions">
-      <a id="callBtn" class="nav-btn ghost" href="#">დარეკვა</a>
+      <a id="callBtn" class="nav-btn" href="#">დარეკვა</a>
       <a id="whatsappBtn" class="nav-btn whatsapp" href="#" target="_blank">WhatsApp</a>
     </div>
   </nav>
 
-  <section class="hero-content">
-    <span class="eyebrow">Mamulux Collection</span>
-    <h2>პრემიუმ ავეჯის ონლაინ კატალოგი</h2>
-    <p>ნახე მოდელები, ზომები, ფერები და ფასები ერთ სივრცეში. შეარჩიე სასურველი პროდუქტი და დაგვიკავშირდი მარტივად.</p>
-
-    <div class="hero-actions">
-      <a href="#catalog" class="hero-btn primary">კატალოგის ნახვა</a>
-      <a id="heroWhatsapp" href="#" target="_blank" class="hero-btn secondary">მოგვწერე WhatsApp-ზე</a>
-    </div>
-  </section>
+  <div class="hero-content">
+    <span class="eyebrow">თანამედროვე ონლაინ კატალოგი</span>
+    <h2>აღმოაჩინე პროდუქცია მარტივად, სწრაფად და ლამაზად</h2>
+    <p>აირჩიე სასურველი მოდელი, ნახე ფერები, ზომები და ფასები ერთ სივრცეში.</p>
+  </div>
 </header>
 
-<section id="catalog" class="catalog-wrap">
-  <div class="tools">
-    <input id="searchInput" type="text" placeholder="მოძებნე პროდუქტი, კატეგორია ან კოდი..." />
-    <select id="categoryFilter">
-      <option value="">ყველა კატეგორია</option>
-    </select>
-  </div>
-
-  <div id="productsGrid" class="products-grid"></div>
+<section class="tools">
+  <input id="searchInput" type="text" placeholder="მოძებნე პროდუქტი, კატეგორია ან კოდი..." />
+  <select id="categoryFilter">
+    <option value="">ყველა კატეგორია</option>
+  </select>
 </section>
+
+<main>
+  <div id="productsGrid" class="products-grid"></div>
+</main>
 
 <footer class="footer">
   <div>
@@ -63,7 +57,7 @@
   </div>
 </footer>
 
-<script src="./config.js"></script>
-<script src="./script.js"></script>
+<script src="config.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
