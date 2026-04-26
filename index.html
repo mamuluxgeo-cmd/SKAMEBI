@@ -3,61 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Mamulux | Product Catalog</title>
-
-  <link rel="stylesheet" href="style.css" />
+  <title>Mamulux | სკამების კატალოგი</title>
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
 
-<header class="hero">
-  <nav class="navbar">
-    <div class="brand">
-      <img id="companyLogo" src="" alt="Mamulux Logo">
-      <div>
-        <h1>Mamulux</h1>
-        <p>Premium Product Catalog</p>
-      </div>
+<header class="topbar">
+  <div class="brand">
+    <img id="companyLogo" src="" alt="Mamulux">
+    <div>
+      <h1>სკამების კატალოგი</h1>
+      <p>Mamulux Premium Collection</p>
     </div>
+  </div>
 
-    <div class="nav-actions">
-      <a id="callBtn" class="nav-btn" href="#">დარეკვა</a>
-      <a id="whatsappBtn" class="nav-btn whatsapp" href="#" target="_blank">WhatsApp</a>
-    </div>
-  </nav>
-
-  <div class="hero-content">
-    <span class="eyebrow">თანამედროვე ონლაინ კატალოგი</span>
-    <h2>აღმოაჩინე პროდუქცია მარტივად, სწრაფად და ლამაზად</h2>
-    <p>აირჩიე სასურველი მოდელი, ნახე ფერები, ზომები და ფასები ერთ სივრცეში.</p>
+  <div class="top-actions">
+    <a id="callBtn" class="liquid-btn dark" href="#">დარეკვა</a>
+    <a id="whatsappBtn" class="liquid-btn green" href="#" target="_blank">WhatsApp</a>
   </div>
 </header>
 
-<section class="tools">
-  <input id="searchInput" type="text" placeholder="მოძებნე პროდუქტი, კატეგორია ან კოდი..." />
+<section class="filters">
+  <input id="searchInput" type="text" placeholder="ძიება კოდით, სახელით ან კატეგორიით..." />
   <select id="categoryFilter">
     <option value="">ყველა კატეგორია</option>
   </select>
 </section>
 
-<main>
+<main class="catalog">
   <div id="productsGrid" class="products-grid"></div>
 </main>
 
 <footer class="footer">
   <div>
-    <h3>Mamulux</h3>
+    <strong>Mamulux</strong>
     <p id="footerAddress"></p>
   </div>
-
-  <div class="footer-links">
+  <div>
     <a id="facebookLink" href="#" target="_blank">Facebook</a>
     <a id="instagramLink" href="#" target="_blank">Instagram</a>
-    <a id="mapsLink" href="#" target="_blank">Google Maps</a>
+    <a id="mapsLink" href="#" target="_blank">Maps</a>
   </div>
 </footer>
 
-<script src="config.js"></script>
-<script src="script.js"></script>
+<script src="./config.js"></script>
+<script src="./script.js"></script>
 </body>
 </html>
