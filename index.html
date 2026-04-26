@@ -1,22 +1,10 @@
-<!DOCTYPE html>
-<html lang="ka">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Mamulux | Product Catalog</title>
-
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-
 <header class="hero">
   <nav class="navbar">
     <div class="brand">
       <img id="companyLogo" src="" alt="Mamulux Logo">
       <div>
         <h1>Mamulux</h1>
-        <p>Premium Product Catalog</p>
+        <p>Premium Furniture Catalog</p>
       </div>
     </div>
 
@@ -27,37 +15,18 @@
   </nav>
 
   <div class="hero-content">
-    <span class="eyebrow">თანამედროვე ონლაინ კატალოგი</span>
-    <h2>აღმოაჩინე პროდუქცია მარტივად, სწრაფად და ლამაზად</h2>
-    <p>აირჩიე სასურველი მოდელი, ნახე ფერები, ზომები და ფასები ერთ სივრცეში.</p>
+    <span class="eyebrow">Mamulux Collection</span>
+    <h2>დიზაინერული ავეჯი შენი სივრცისთვის</h2>
+    <p>
+      შეარჩიე პრემიუმ ხარისხის სკამები, მაგიდები და ავეჯის მოდელები თანამედროვე კატალოგიდან.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#productsGrid" class="hero-main-btn">კატალოგის ნახვა</a>
+      <a id="heroWhatsapp" href="#" target="_blank" class="hero-second-btn">მოგვწერე WhatsApp-ზე</a>
+    </div>
   </div>
+
+  <div class="hero-glow one"></div>
+  <div class="hero-glow two"></div>
 </header>
-
-<section class="tools">
-  <input id="searchInput" type="text" placeholder="მოძებნე პროდუქტი, კატეგორია ან კოდი..." />
-  <select id="categoryFilter">
-    <option value="">ყველა კატეგორია</option>
-  </select>
-</section>
-
-<main>
-  <div id="productsGrid" class="products-grid"></div>
-</main>
-
-<footer class="footer">
-  <div>
-    <h3>Mamulux</h3>
-    <p id="footerAddress"></p>
-  </div>
-
-  <div class="footer-links">
-    <a id="facebookLink" href="#" target="_blank">Facebook</a>
-    <a id="instagramLink" href="#" target="_blank">Instagram</a>
-    <a id="mapsLink" href="#" target="_blank">Google Maps</a>
-  </div>
-</footer>
-
-<script src="config.js"></script>
-<script src="script.js"></script>
-</body>
-</html>
