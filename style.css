@@ -100,6 +100,54 @@ a {
   color: #06140a;
 }
 
+.contact-strip {
+  max-width: 1500px;
+  margin: 0 auto 16px;
+  padding: 0 18px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+.contact-card {
+  min-height: 58px;
+  border-radius: 20px;
+  padding: 14px 16px;
+  color: white;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+  transition: 0.25s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-3px);
+}
+
+.contact-card.phone {
+  background: #111;
+}
+
+.contact-card.whatsapp {
+  background: #25d366;
+  color: #06140a;
+}
+
+.contact-card.facebook {
+  background: #1877f2;
+}
+
+.contact-card.instagram {
+  background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+}
+
+.contact-card.maps {
+  background: linear-gradient(135deg, #111, #9b6d2f);
+}
+
 .filters {
   position: sticky;
   top: 0;
@@ -165,6 +213,7 @@ a {
   height: 100%;
   object-fit: cover;
   transition: 0.35s ease;
+  cursor: zoom-in;
 }
 
 .product-card:hover .product-image {
@@ -324,6 +373,43 @@ a {
   color: #06140a;
 }
 
+.image-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.86);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+}
+
+.image-modal.active {
+  display: flex;
+}
+
+.image-modal img {
+  max-width: 96vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 22px;
+  background: white;
+}
+
+#closeModal {
+  position: fixed;
+  top: 22px;
+  right: 26px;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 999px;
+  background: white;
+  color: #111;
+  font-size: 32px;
+  cursor: pointer;
+}
+
 .footer {
   background: #111;
   color: white;
@@ -371,6 +457,14 @@ a {
 @media (max-width: 980px) {
   .products-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .contact-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact-card.maps {
+    grid-column: 1 / -1;
   }
 }
 
@@ -420,6 +514,12 @@ a {
 
   .footer {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-strip {
+    grid-template-columns: 1fr;
   }
 }
 
