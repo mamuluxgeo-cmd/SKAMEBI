@@ -2,21 +2,15 @@ let allProducts = [];
 let companyConfig = {};
 
 document.addEventListener("DOMContentLoaded", async () => {
-  try {
-    companyConfig = await loadConfig();
-    setupCompanyInfo(companyConfig);
+  companyConfig = await loadConfig();
+  setupCompanyInfo(companyConfig);
 
-    allProducts = await loadProducts();
-    renderCategoryFilter(allProducts);
-    renderProducts(allProducts);
+  allProducts = await loadProducts();
+  renderCategoryFilter(allProducts);
+  renderProducts(allProducts);
 
-    document.getElementById("searchInput").addEventListener("input", filterProducts);
-    document.getElementById("categoryFilter").addEventListener("change", filterProducts);
-  } catch (error) {
-    document.getElementById("productsGrid").innerHTML =
-      `<div class="empty">მონაცემების წამოღება ვერ მოხერხდა. შეამოწმე Google Sheet-ის Public წვდომა.</div>`;
-    console.error(error);
-  }
+  document.getElementById("searchInput").addEventListener("input", filterProducts);
+  document.getElementById("categoryFilter").addEventListener("change", filterProducts);
 });
 
 async function loadProducts() {
@@ -42,11 +36,7 @@ async function loadProducts() {
     color3: clean(row[15]),
     image3: fixDriveImage(clean(row[16])),
     status: clean(row[17])
-  })).filter(product => {
-    const isHidden = product.status.toLowerCase() === "hidden";
-    const hasSomething = product.code || product.category || product.name || product.description || product.imageMain;
-    return !isHidden && hasSomething;
-  });
+  })).filter(product => product.status.toLowerCase() !== "hidden");
 }
 
 async function loadConfig() {
@@ -79,11 +69,6 @@ function setupCompanyInfo(config) {
     document.getElementById("whatsappBtn").href = `https://wa.me/${config.whatsapp}`;
   }
 
-  const heroWhatsapp = document.getElementById("heroWhatsapp");
-  if (heroWhatsapp && config.whatsapp) {
-    heroWhatsapp.href = `https://wa.me/${config.whatsapp}`;
-  }
-
   setLink("facebookLink", config.facebook);
   setLink("instagramLink", config.instagram);
   setLink("mapsLink", config.maps);
@@ -111,52 +96,45 @@ function renderProducts(products) {
 
     card.innerHTML = `
       <div class="image-box">
-        ${mainImage
-          ? `<img src="${escapeAttr(mainImage)}" alt="${escapeAttr(product.name || product.category)}" class="product-image">`
-          : `<div class="no-image">No Image</div>`
-        }
+        ${mainImage ? `<img src="${mainImage}" alt="${product.name}" class="product-image">` : `<div class="no-image">No Image</div>`}
         ${product.priceOld && product.priceNew ? `<span class="sale-badge">SALE</span>` : ""}
       </div>
 
       <div class="product-body">
-        ${product.category ? `<span class="category">${escapeHTML(product.category)}</span>` : ""}
-        ${product.name ? `<h2>${escapeHTML(product.name)}</h2>` : ""}
-        ${product.code ? `<p class="code">კოდი: ${escapeHTML(product.code)}</p>` : ""}
+        ${product.category ? `<span class="category">${product.category}</span>` : ""}
+        ${product.name ? `<h2>${product.name}</h2>` : ""}
+        ${product.code ? `<p class="code">კოდი: ${product.code}</p>` : ""}
 
-        ${product.description ? `<p class="description">${escapeHTML(product.description)}</p>` : ""}
+        ${product.description ? `<p class="description">${product.description}</p>` : ""}
 
-        ${hasSpecs(product) ? `
-          <div class="specs">
-            ${product.width ? `<span>სიგრძე: ${escapeHTML(product.width)}</span>` : ""}
-            ${product.depth ? `<span>სიგანე: ${escapeHTML(product.depth)}</span>` : ""}
-            ${product.height ? `<span>სიმაღლე: ${escapeHTML(product.height)}</span>` : ""}
-          </div>
-        ` : ""}
+        <div class="specs">
+          ${product.width ? `<span>სიგრძე: ${product.width}</span>` : ""}
+          ${product.depth ? `<span>სიგანე: ${product.depth}</span>` : ""}
+          ${product.height ? `<span>სიმაღლე: ${product.height}</span>` : ""}
+        </div>
 
         ${colors.length ? `
           <div class="colors">
-            <p>ხელმისაწვდომი ფერები</p>
+            <p>ფერები</p>
             <div class="color-list">
               ${colors.map((c, i) => `
-                <button class="color-btn ${i === 0 ? "active" : ""}" data-image="${escapeAttr(c.image)}">
-                  ${escapeHTML(c.name)}
+                <button class="color-btn ${i === 0 ? "active" : ""}" data-image="${c.image}">
+                  ${c.name}
                 </button>
               `).join("")}
             </div>
           </div>
         ` : ""}
 
-        ${(product.priceOld || product.priceNew || product.priceWholesale) ? `
-          <div class="prices">
-            ${product.priceOld ? `<span class="old-price">${formatPrice(product.priceOld)}</span>` : ""}
-            ${product.priceNew ? `<span class="new-price">${formatPrice(product.priceNew)}</span>` : ""}
-            ${product.priceWholesale ? `<span class="wholesale-price">საბითუმო: ${formatPrice(product.priceWholesale)}</span>` : ""}
-          </div>
-        ` : ""}
+        <div class="prices">
+          ${product.priceOld ? `<span class="old-price">${formatPrice(product.priceOld)}</span>` : ""}
+          ${product.priceNew ? `<span class="new-price">${formatPrice(product.priceNew)}</span>` : ""}
+          ${product.priceWholesale ? `<span class="wholesale-price">საბითუმო: ${formatPrice(product.priceWholesale)}</span>` : ""}
+        </div>
 
         <div class="card-actions">
           ${companyConfig.phone ? `<a href="tel:${companyConfig.phone}">დარეკვა</a>` : ""}
-          ${companyConfig.whatsapp ? `<a class="wa" href="${createWhatsappLink(product)}" target="_blank">WhatsApp</a>` : ""}
+          ${companyConfig.whatsapp ? `<a class="wa" href="https://wa.me/${companyConfig.whatsapp}" target="_blank">WhatsApp</a>` : ""}
         </div>
       </div>
     `;
@@ -203,6 +181,7 @@ function filterProducts() {
 
   const filtered = allProducts.filter(product => {
     const text = `${product.code} ${product.category} ${product.name} ${product.description}`.toLowerCase();
+
     return text.includes(search) && (!category || product.category === category);
   });
 
@@ -263,18 +242,9 @@ function fixDriveImage(url) {
   return url;
 }
 
-function createWhatsappLink(product) {
-  const text = `გამარჯობა, მაინტერესებს პროდუქტი: ${product.name || product.category || ""}${product.code ? " | კოდი: " + product.code : ""}`;
-  return `https://wa.me/${companyConfig.whatsapp}?text=${encodeURIComponent(text)}`;
-}
-
-function hasSpecs(product) {
-  return product.width || product.depth || product.height;
-}
-
 function formatPrice(price) {
   if (!price) return "";
-  return `${escapeHTML(price)} ₾`;
+  return `${price} ₾`;
 }
 
 function clean(value) {
@@ -289,18 +259,4 @@ function setLink(id, url) {
   } else {
     el.style.display = "none";
   }
-}
-
-function escapeHTML(str) {
-  return String(str).replace(/[&<>"']/g, match => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#039;"
-  }[match]));
-}
-
-function escapeAttr(str) {
-  return escapeHTML(str);
 }
