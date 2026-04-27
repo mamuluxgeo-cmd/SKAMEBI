@@ -69,14 +69,6 @@ async function loadConfig() {
 function setupCompanyInfo(config) {
   if (config.logo) document.getElementById("companyLogo").src = config.logo;
 
-  if (config.phone) {
-    document.getElementById("callBtn").href = `tel:${config.phone}`;
-  }
-
-  if (config.whatsapp) {
-    document.getElementById("whatsappBtn").href = `https://wa.me/${config.whatsapp}`;
-  }
-
   setTopLink("topPhone", config.phone ? `tel:${config.phone}` : "");
   setTopLink("topWhatsapp", config.whatsapp ? `https://wa.me/${config.whatsapp}` : "");
   setTopLink("topFacebook", config.facebook);
