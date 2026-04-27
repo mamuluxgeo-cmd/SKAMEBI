@@ -54,52 +54,6 @@ a {
   font-size: 14px;
 }
 
-.top-actions {
-  display: flex;
-  gap: 10px;
-}
-
-.liquid-btn {
-  position: relative;
-  overflow: hidden;
-  border-radius: 999px;
-  padding: 14px 22px;
-  font-weight: 900;
-  font-size: 14px;
-  box-shadow: 0 14px 30px rgba(0,0,0,0.12);
-  transition: 0.25s ease;
-}
-
-.liquid-btn::before {
-  content: "";
-  position: absolute;
-  width: 80px;
-  height: 80px;
-  left: -35px;
-  top: -35px;
-  background: rgba(255,255,255,0.35);
-  border-radius: 50%;
-  transition: 0.35s ease;
-}
-
-.liquid-btn:hover {
-  transform: translateY(-3px);
-}
-
-.liquid-btn:hover::before {
-  transform: scale(4);
-}
-
-.liquid-btn.dark {
-  background: #111;
-  color: white;
-}
-
-.liquid-btn.green {
-  background: #25d366;
-  color: #06140a;
-}
-
 .contact-strip {
   max-width: 1500px;
   margin: 0 auto 16px;
@@ -146,6 +100,32 @@ a {
 
 .contact-card.maps {
   background: linear-gradient(135deg, #111, #9b6d2f);
+}
+
+.liquid-contact {
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-contact::before {
+  content: "";
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  left: -45px;
+  top: -45px;
+  background: rgba(255,255,255,0.35);
+  border-radius: 50%;
+  transition: 0.4s ease;
+}
+
+.liquid-contact:hover::before {
+  transform: scale(5);
+}
+
+.liquid-contact span {
+  position: relative;
+  z-index: 2;
 }
 
 .filters {
@@ -472,15 +452,6 @@ a {
   .topbar {
     flex-direction: column;
     align-items: stretch;
-  }
-
-  .top-actions {
-    width: 100%;
-  }
-
-  .liquid-btn {
-    flex: 1;
-    text-align: center;
   }
 
   .filters {
