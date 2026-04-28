@@ -35,13 +35,22 @@ async function loadProducts() {
     priceNew: clean(row[8]),
     priceWholesale: clean(row[9]),
     imageMain: fixDriveImage(clean(row[10])),
+
     color1: clean(row[11]),
     image1: fixDriveImage(clean(row[12])),
     color2: clean(row[13]),
     image2: fixDriveImage(clean(row[14])),
     color3: clean(row[15]),
     image3: fixDriveImage(clean(row[16])),
-    status: clean(row[17])
+
+    status: clean(row[17]),
+
+    color4: clean(row[18]),
+    image4: fixDriveImage(clean(row[19])),
+    color5: clean(row[20]),
+    image5: fixDriveImage(clean(row[21])),
+    color6: clean(row[22]),
+    image6: fixDriveImage(clean(row[23]))
   })).filter(product => {
     const isHidden = product.status.toLowerCase() === "hidden";
     const hasSomething = product.code || product.category || product.name || product.description || product.imageMain;
@@ -164,9 +173,14 @@ function renderProducts(products) {
 
 function getColors(product) {
   const colors = [];
+
   if (product.color1 && product.image1) colors.push({ name: product.color1, image: product.image1 });
   if (product.color2 && product.image2) colors.push({ name: product.color2, image: product.image2 });
   if (product.color3 && product.image3) colors.push({ name: product.color3, image: product.image3 });
+  if (product.color4 && product.image4) colors.push({ name: product.color4, image: product.image4 });
+  if (product.color5 && product.image5) colors.push({ name: product.color5, image: product.image5 });
+  if (product.color6 && product.image6) colors.push({ name: product.color6, image: product.image6 });
+
   return colors;
 }
 
